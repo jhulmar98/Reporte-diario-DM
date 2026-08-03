@@ -1,0 +1,1582 @@
+
+/* =========================================================
+   REPORTE DE PERSONAL CON DESCANSO MÉDICO
+   CSS PROFESIONAL — MOBILE FIRST
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+:root{
+
+    --primary:#556B2F;
+    --primary-dark:#3D4D1F;
+    --primary-deep:#26340F;
+
+    --accent:#C8D400;
+    --accent-dark:#AEB900;
+    --accent-soft:#E6EC72;
+    --accent-light:#F4F7C8;
+
+    --background:#F3F6EE;
+    --surface:#FFFFFF;
+    --surface-soft:#F8FAF6;
+
+    --text:#172012;
+    --text-soft:#4E5948;
+    --text-muted:#778170;
+
+    --border:#D8DFCF;
+    --border-strong:#BBC7AE;
+
+    --success:#2E7D32;
+    --success-soft:#EAF5EA;
+
+    --danger:#B42318;
+    --danger-soft:#FDECEA;
+
+    --warning:#A16207;
+    --warning-soft:#FFF7E0;
+
+    --shadow-soft:
+        0 8px 22px rgba(38,52,15,0.08);
+
+    --shadow-medium:
+        0 16px 40px rgba(38,52,15,0.14);
+
+    --shadow-strong:
+        0 24px 60px rgba(38,52,15,0.22);
+
+    --radius-sm:10px;
+    --radius-md:14px;
+    --radius-lg:18px;
+    --radius-xl:24px;
+
+    --transition-fast:0.16s ease;
+    --transition:0.25s ease;
+
+    --max-width:860px;
+
+    --safe-top:env(safe-area-inset-top);
+    --safe-bottom:env(safe-area-inset-bottom);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    min-height:100%;
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+
+    width:100%;
+    min-height:100vh;
+    min-height:100dvh;
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+
+    color:var(--text);
+
+    background:
+        linear-gradient(
+            180deg,
+            #F8FAF5 0%,
+            var(--background) 100%
+        );
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button,
+label,
+select{
+    -webkit-tap-highlight-color:transparent;
+}
+
+button{
+    border:0;
+}
+
+input,
+select{
+    font-size:16px;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+fieldset{
+    min-width:0;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
+.contenedor-principal{
+
+    width:100%;
+    min-height:100vh;
+    min-height:100dvh;
+
+    padding:
+        calc(14px + var(--safe-top))
+        10px
+        calc(26px + var(--safe-bottom));
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+}
+
+
+/* =========================================================
+   TARJETA PRINCIPAL
+========================================================= */
+.formulario-card{
+
+    width:100%;
+    max-width:var(--max-width);
+
+    background:var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:var(--radius-xl);
+
+    box-shadow:var(--shadow-medium);
+
+    overflow:visible;
+
+    position:relative;
+}
+
+.formulario-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary-dark),
+            var(--accent),
+            var(--primary)
+        );
+
+    border-radius:
+        var(--radius-xl)
+        var(--radius-xl)
+        0
+        0;
+
+    z-index:2;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+.formulario-header{
+
+    padding:
+        24px 18px 22px;
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:13px;
+
+    color:#FFFFFF;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-deep) 0%,
+            var(--primary-dark) 48%,
+            var(--primary) 100%
+        );
+
+    border-radius:
+        var(--radius-xl)
+        var(--radius-xl)
+        0
+        0;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.formulario-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:145px;
+    height:145px;
+
+    top:-75px;
+    right:-55px;
+
+    border-radius:50%;
+
+    background:
+        rgba(200,212,0,0.10);
+
+    pointer-events:none;
+}
+
+.formulario-header__icono{
+
+    width:46px;
+    height:46px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--primary-deep);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-soft)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.24);
+
+    border-radius:13px;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.18);
+
+    font-size:1.15rem;
+
+    position:relative;
+    z-index:1;
+}
+
+.formulario-header > div:last-child{
+
+    min-width:0;
+
+    position:relative;
+    z-index:1;
+}
+
+.formulario-header h1{
+
+    margin-bottom:5px;
+
+    color:#FFFFFF;
+
+    font-size:
+        clamp(1.16rem,5.5vw,1.45rem);
+
+    font-weight:850;
+
+    line-height:1.18;
+
+    letter-spacing:-0.25px;
+}
+
+.formulario-header p{
+
+    color:
+        rgba(255,255,255,0.78);
+
+    font-size:0.78rem;
+
+    line-height:1.45;
+}
+
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+#formReporteDM{
+
+    padding:
+        20px 14px
+        calc(26px + var(--safe-bottom));
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+.formulario-grid{
+
+    width:100%;
+
+    display:grid;
+
+    gap:16px;
+}
+
+.formulario-grid--dos{
+
+    grid-template-columns:1fr;
+
+    margin-bottom:20px;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+.campo-formulario{
+
+    width:100%;
+
+    position:relative;
+}
+
+.campo-formulario > label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--text);
+
+    font-size:0.83rem;
+    font-weight:750;
+
+    line-height:1.3;
+}
+
+
+/* =========================================================
+   CAMPOS CON ICONO
+========================================================= */
+.campo-con-icono{
+
+    width:100%;
+
+    position:relative;
+}
+
+.campo-con-icono > i{
+
+    position:absolute;
+
+    left:14px;
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    color:var(--primary);
+
+    font-size:0.95rem;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+.campo-con-icono input,
+.campo-con-icono select{
+
+    width:100%;
+    min-height:52px;
+
+    padding:
+        0 44px;
+
+    color:var(--text);
+
+    background:#FFFFFF;
+
+    border:
+        1px solid var(--border-strong);
+
+    border-radius:var(--radius-md);
+
+    outline:none;
+
+    font-size:16px;
+
+    line-height:1;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.campo-con-icono select{
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    cursor:pointer;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--primary) 50%
+        ),
+        linear-gradient(
+            135deg,
+            var(--primary) 50%,
+            transparent 50%
+        );
+
+    background-position:
+        calc(100% - 20px) 22px,
+        calc(100% - 15px) 22px;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat:no-repeat;
+}
+
+.campo-con-icono input::placeholder{
+
+    color:#99A293;
+
+    opacity:1;
+}
+
+.campo-con-icono input:hover,
+.campo-con-icono select:hover{
+
+    border-color:var(--primary);
+}
+
+.campo-con-icono input:focus,
+.campo-con-icono select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(85,107,47,0.14);
+
+    background:#FFFFFF;
+}
+
+.campo-con-icono input:read-only{
+
+    color:var(--primary-deep);
+
+    background:#F1F4ED;
+
+    cursor:default;
+}
+
+.campo-con-icono input:disabled,
+.campo-con-icono select:disabled{
+
+    color:#8B9585;
+
+    background:#EDF0E9;
+
+    cursor:not-allowed;
+
+    opacity:0.78;
+}
+
+
+/* =========================================================
+   BOTÓN LIMPIAR
+========================================================= */
+.boton-limpiar{
+
+    width:36px;
+    height:36px;
+
+    position:absolute;
+
+    top:50%;
+    right:7px;
+
+    transform:
+        translateY(-50%);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--text-muted);
+
+    background:transparent;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.boton-limpiar:active{
+
+    transform:
+        translateY(-50%)
+        scale(0.94);
+}
+
+.boton-limpiar:hover{
+
+    color:var(--danger);
+
+    background:var(--danger-soft);
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+.seccion-formulario{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:
+        18px 14px 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #FFFFFF,
+            var(--surface-soft)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-soft);
+}
+
+.seccion-formulario legend{
+
+    max-width:calc(100% - 18px);
+
+    padding:
+        0 9px;
+
+    color:var(--primary-dark);
+
+    background:#FFFFFF;
+
+    font-size:0.86rem;
+    font-weight:800;
+
+    line-height:1.3;
+}
+
+.seccion-formulario legend i{
+
+    margin-right:6px;
+
+    color:var(--primary);
+}
+
+
+/* =========================================================
+   AUTOCOMPLETADO
+========================================================= */
+.campo-autocompletado{
+
+    position:relative;
+}
+
+.lista-resultados{
+
+    width:100%;
+    max-height:260px;
+
+    position:absolute;
+
+    top:
+        calc(100% + 6px);
+    left:0;
+
+    z-index:100;
+
+    overflow-y:auto;
+    overscroll-behavior:contain;
+
+    background:#FFFFFF;
+
+    border:
+        1px solid var(--border-strong);
+
+    border-radius:var(--radius-md);
+
+    box-shadow:var(--shadow-strong);
+
+    -webkit-overflow-scrolling:touch;
+}
+
+.resultado-persona{
+
+    width:100%;
+
+    min-height:68px;
+
+    padding:
+        11px 12px;
+
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+    color:var(--text);
+
+    background:#FFFFFF;
+
+    border-bottom:
+        1px solid #EBEFE6;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:
+        background var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.resultado-persona:last-child{
+    border-bottom:0;
+}
+
+.resultado-persona:active{
+
+    background:var(--accent-light);
+
+    transform:
+        scale(0.99);
+}
+
+.resultado-persona:hover{
+
+    background:var(--accent-light);
+}
+
+.resultado-persona__icono{
+
+    width:40px;
+    height:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--primary);
+
+    background:
+        rgba(85,107,47,0.10);
+
+    border-radius:11px;
+
+    font-size:0.92rem;
+}
+
+.resultado-persona__datos{
+
+    min-width:0;
+
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:3px;
+}
+
+.resultado-persona__datos strong{
+
+    overflow:hidden;
+
+    color:var(--text);
+
+    font-size:0.82rem;
+    font-weight:800;
+
+    line-height:1.3;
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.resultado-persona__datos span{
+
+    color:var(--text-soft);
+
+    font-size:0.75rem;
+}
+
+.resultado-persona__datos small{
+
+    overflow:hidden;
+
+    color:var(--text-muted);
+
+    font-size:0.69rem;
+
+    line-height:1.3;
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.lista-resultados__vacio{
+
+    padding:
+        21px 14px;
+
+    color:var(--text-muted);
+
+    background:#FFFFFF;
+
+    font-size:0.79rem;
+
+    text-align:center;
+}
+
+
+/* =========================================================
+   PERSONA SELECCIONADA
+========================================================= */
+.persona-seleccionada{
+
+    margin-top:14px;
+
+    padding:
+        13px;
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85,107,47,0.09),
+            rgba(200,212,0,0.13)
+        );
+
+    border:
+        1px solid rgba(85,107,47,0.22);
+
+    border-radius:var(--radius-md);
+}
+
+.persona-seleccionada__icono{
+
+    width:40px;
+    height:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--primary-deep);
+
+    background:var(--accent-soft);
+
+    border-radius:11px;
+
+    font-size:0.94rem;
+}
+
+.persona-seleccionada__datos{
+
+    min-width:0;
+
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:4px;
+}
+
+.persona-seleccionada__datos strong{
+
+    color:var(--primary-deep);
+
+    font-size:0.84rem;
+    font-weight:800;
+
+    line-height:1.35;
+
+    overflow-wrap:anywhere;
+}
+
+.persona-seleccionada__datos span{
+
+    color:var(--text-soft);
+
+    font-size:0.74rem;
+
+    line-height:1.35;
+}
+
+
+/* =========================================================
+   CARGA DE FOTOGRAFÍA
+========================================================= */
+.carga-archivo{
+
+    width:100%;
+    min-height:108px;
+
+    padding:
+        18px 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+
+    gap:13px;
+
+    color:var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85,107,47,0.05),
+            rgba(200,212,0,0.12)
+        );
+
+    border:
+        2px dashed var(--border-strong);
+
+    border-radius:var(--radius-lg);
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition);
+}
+
+.carga-archivo:hover{
+
+    border-color:var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85,107,47,0.10),
+            rgba(200,212,0,0.17)
+        );
+}
+
+.carga-archivo:active{
+
+    transform:
+        scale(0.99);
+}
+
+.carga-archivo__icono{
+
+    width:48px;
+    height:48px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--primary-deep);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-soft)
+        );
+
+    border-radius:14px;
+
+    box-shadow:
+        0 7px 16px rgba(200,212,0,0.22);
+
+    font-size:1.15rem;
+}
+
+.carga-archivo__contenido{
+
+    min-width:0;
+
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.carga-archivo__contenido strong{
+
+    color:var(--primary-dark);
+
+    font-size:0.86rem;
+
+    line-height:1.3;
+}
+
+.carga-archivo__contenido span{
+
+    overflow:hidden;
+
+    color:var(--text-muted);
+
+    font-size:0.74rem;
+
+    line-height:1.3;
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   VISTA PREVIA
+========================================================= */
+.vista-previa{
+
+    margin-top:14px;
+
+    padding:
+        11px;
+
+    background:#FFFFFF;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-soft);
+}
+
+.vista-previa img{
+
+    width:100%;
+    max-height:440px;
+
+    object-fit:contain;
+
+    background:#E8ECE3;
+
+    border-radius:12px;
+}
+
+.boton-eliminar-foto{
+
+    width:100%;
+    min-height:46px;
+
+    margin-top:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    color:var(--danger);
+
+    background:var(--danger-soft);
+
+    border:
+        1px solid rgba(180,35,24,0.18);
+
+    border-radius:12px;
+
+    font-size:0.81rem;
+    font-weight:800;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.boton-eliminar-foto:active{
+
+    transform:
+        scale(0.98);
+}
+
+.boton-eliminar-foto:hover{
+
+    color:#FFFFFF;
+
+    background:var(--danger);
+}
+
+
+/* =========================================================
+   ACCIONES
+========================================================= */
+.acciones-formulario{
+
+    margin-top:24px;
+
+    display:flex;
+    flex-direction:column-reverse;
+
+    gap:10px;
+}
+
+.boton{
+
+    width:100%;
+    min-height:52px;
+
+    padding:
+        0 18px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    border-radius:var(--radius-md);
+
+    font-size:0.87rem;
+    font-weight:800;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    transition:
+        transform var(--transition-fast),
+        background var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.boton:active{
+
+    transform:
+        scale(0.98);
+}
+
+.boton--principal{
+
+    color:var(--primary-deep);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-soft)
+        );
+
+    border:
+        1px solid var(--accent-dark);
+
+    box-shadow:
+        0 10px 22px rgba(200,212,0,0.26);
+}
+
+.boton--principal:hover{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent-dark),
+            var(--accent)
+        );
+
+    box-shadow:
+        0 13px 28px rgba(200,212,0,0.32);
+}
+
+.boton--secundario{
+
+    color:var(--primary-dark);
+
+    background:#FFFFFF;
+
+    border:
+        1px solid var(--border-strong);
+}
+
+.boton--secundario:hover{
+
+    color:#FFFFFF;
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+}
+
+.boton:disabled{
+
+    opacity:0.58;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+}
+
+
+/* =========================================================
+   MENSAJES
+========================================================= */
+.mensaje-sistema{
+
+    margin:
+        16px 14px 0;
+
+    padding:
+        13px 14px;
+
+    border-radius:var(--radius-md);
+
+    font-size:0.8rem;
+    font-weight:700;
+
+    line-height:1.45;
+}
+
+.mensaje-sistema--exito{
+
+    color:var(--success);
+
+    background:var(--success-soft);
+
+    border:
+        1px solid rgba(46,125,50,0.22);
+}
+
+.mensaje-sistema--error{
+
+    color:var(--danger);
+
+    background:var(--danger-soft);
+
+    border:
+        1px solid rgba(180,35,24,0.22);
+}
+
+.mensaje-sistema--advertencia{
+
+    color:var(--warning);
+
+    background:var(--warning-soft);
+
+    border:
+        1px solid rgba(161,98,7,0.20);
+}
+
+
+/* =========================================================
+   PANTALLA DE CARGA
+========================================================= */
+.pantalla-carga{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:
+        calc(20px + var(--safe-top))
+        18px
+        calc(20px + var(--safe-bottom));
+
+    background:
+        rgba(24,31,15,0.70);
+
+    backdrop-filter:
+        blur(7px);
+    -webkit-backdrop-filter:
+        blur(7px);
+}
+
+.pantalla-carga__contenido{
+
+    width:100%;
+    max-width:280px;
+
+    padding:
+        27px 22px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:14px;
+
+    color:#FFFFFF;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-deep),
+            var(--primary)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:
+        0 24px 60px rgba(0,0,0,0.34);
+
+    text-align:center;
+}
+
+.pantalla-carga__contenido p{
+
+    font-size:0.84rem;
+    font-weight:750;
+}
+
+.spinner{
+
+    width:42px;
+    height:42px;
+
+    border:
+        4px solid rgba(255,255,255,0.20);
+
+    border-top-color:var(--accent);
+
+    border-radius:50%;
+
+    animation:
+        girar 0.78s linear infinite;
+}
+
+@keyframes girar{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   ATRIBUTO HIDDEN
+========================================================= */
+[hidden]{
+    display:none !important;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+.lista-resultados::-webkit-scrollbar{
+
+    width:7px;
+}
+
+.lista-resultados::-webkit-scrollbar-track{
+
+    background:#F2F5EE;
+}
+
+.lista-resultados::-webkit-scrollbar-thumb{
+
+    background:var(--border-strong);
+
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.carga-archivo:focus-visible{
+
+    outline:
+        3px solid rgba(200,212,0,0.48);
+
+    outline-offset:3px;
+}
+
+
+/* =========================================================
+   TELÉFONOS MUY PEQUEÑOS
+========================================================= */
+@media (max-width:380px){
+
+    .contenedor-principal{
+
+        padding:
+            var(--safe-top)
+            0
+            var(--safe-bottom);
+    }
+
+    .formulario-card{
+
+        min-height:100vh;
+        min-height:100dvh;
+
+        border:0;
+
+        border-radius:0;
+
+        box-shadow:none;
+    }
+
+    .formulario-card::before{
+
+        border-radius:0;
+    }
+
+    .formulario-header{
+
+        padding:
+            22px 14px 20px;
+
+        border-radius:0;
+    }
+
+    .formulario-header__icono{
+
+        width:42px;
+        height:42px;
+
+        font-size:1rem;
+    }
+
+    .formulario-header h1{
+
+        font-size:1.08rem;
+    }
+
+    .formulario-header p{
+
+        font-size:0.72rem;
+    }
+
+    #formReporteDM{
+
+        padding:
+            18px 12px
+            calc(24px + var(--safe-bottom));
+    }
+
+    .seccion-formulario{
+
+        padding:
+            17px 12px 15px;
+    }
+
+    .campo-con-icono input,
+    .campo-con-icono select{
+
+        padding-left:41px;
+
+        font-size:16px;
+    }
+
+    .carga-archivo{
+
+        padding:
+            16px 12px;
+    }
+
+    .carga-archivo__icono{
+
+        width:44px;
+        height:44px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+@media (min-width:700px){
+
+    .contenedor-principal{
+
+        padding:
+            30px 20px 50px;
+    }
+
+    .formulario-header{
+
+        padding:
+            30px 32px 28px;
+
+        align-items:center;
+
+        gap:17px;
+    }
+
+    .formulario-header__icono{
+
+        width:54px;
+        height:54px;
+
+        border-radius:15px;
+
+        font-size:1.35rem;
+    }
+
+    .formulario-header h1{
+
+        font-size:1.7rem;
+    }
+
+    .formulario-header p{
+
+        font-size:0.88rem;
+    }
+
+    #formReporteDM{
+
+        padding:
+            28px 30px 34px;
+    }
+
+    .formulario-grid--dos{
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:18px;
+    }
+
+    .seccion-formulario{
+
+        padding:
+            22px;
+    }
+
+    .acciones-formulario{
+
+        flex-direction:row;
+
+        justify-content:flex-end;
+    }
+
+    .boton{
+
+        width:auto;
+
+        min-width:155px;
+    }
+
+    .mensaje-sistema{
+
+        margin:
+            20px 30px 0;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+========================================================= */
+@media (prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+}

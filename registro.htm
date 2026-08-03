@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Descansos Médico</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./registro.css"
+    >
+
+</head>
+
+<body>
+
+    <main class="contenedor-principal">
+
+        <section class="formulario-card">
+
+            <header class="formulario-header">
+
+                <div class="formulario-header__icono">
+                    <i class="fa-solid fa-file-medical"></i>
+                </div>
+
+                <div>
+
+                    <h1>
+                        Descansos Médico
+                    </h1>
+
+                   
+
+                </div>
+
+            </header>
+
+
+            <div
+                id="mensajeSistema"
+                class="mensaje-sistema"
+                hidden
+            ></div>
+
+
+            <form
+                id="formReporteDM"
+                autocomplete="off"
+            >
+
+                <!-- FECHA Y TURNO -->
+                <div class="formulario-grid formulario-grid--dos">
+
+                    <div class="campo-formulario">
+
+                        <label for="fechaReporte">
+                            Fecha
+                        </label>
+
+                        <div class="campo-con-icono">
+
+                            <i class="fa-regular fa-calendar"></i>
+
+                            <input
+                                type="date"
+                                id="fechaReporte"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="campo-formulario">
+
+                        <label for="turnoReporte">
+                            Turno
+                        </label>
+
+                        <div class="campo-con-icono">
+
+                            <i class="fa-regular fa-clock"></i>
+
+                            <select
+                                id="turnoReporte"
+                                required
+                            >
+
+                                <option value="">
+                                    Seleccione
+                                </option>
+
+                                <option value="turno-1">
+                                    Turno 1 — 07:00 a 15:00
+                                </option>
+
+                                <option value="turno-2">
+                                    Turno 2 — 15:00 a 22:00
+                                </option>
+
+                                <option value="turno-3">
+                                    Turno 3 — 22:00 a 07:00
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PERSONAL QUE REPORTA -->
+                <fieldset class="seccion-formulario">
+
+                    <legend>
+                        <i class="fa-solid fa-user-pen"></i>
+                        Personal que reporta
+                    </legend>
+
+                    <div class="campo-formulario campo-autocompletado">
+
+                        <label for="buscarReportante">
+                            DNI o nombres
+                        </label>
+
+                        <div class="campo-con-icono">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="text"
+                                id="buscarReportante"
+                                placeholder="Escriba el DNI o nombre"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="btnLimpiarReportante"
+                                class="boton-limpiar"
+                                hidden
+                            >
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="resultadosReportante"
+                            class="lista-resultados"
+                            hidden
+                        ></div>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        id="reportanteDni"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="reportanteNombre"
+                    >
+
+
+                    <article
+                        id="reportanteSeleccionado"
+                        class="persona-seleccionada"
+                        hidden
+                    >
+
+                        <div class="persona-seleccionada__icono">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+
+                        <div class="persona-seleccionada__datos">
+
+                            <strong id="reportanteNombreVista">
+                                -
+                            </strong>
+
+                            <span id="reportanteDniVista">
+                                DNI: -
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </fieldset>
+
+
+                <!-- PERSONAL CON DESCANSO MÉDICO -->
+                <fieldset class="seccion-formulario">
+
+                    <legend>
+                        <i class="fa-solid fa-user-injured"></i>
+                        Personal con descanso médico
+                    </legend>
+
+                    <div class="campo-formulario campo-autocompletado">
+
+                        <label for="buscarPersonalDM">
+                            DNI o nombres
+                        </label>
+
+                        <div class="campo-con-icono">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="text"
+                                id="buscarPersonalDM"
+                                placeholder="Escriba el DNI o nombre"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="btnLimpiarPersonalDM"
+                                class="boton-limpiar"
+                                hidden
+                            >
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="resultadosPersonalDM"
+                            class="lista-resultados"
+                            hidden
+                        ></div>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        id="personalDni"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="personalNombre"
+                    >
+
+
+                    <article
+                        id="personalDMSeleccionado"
+                        class="persona-seleccionada"
+                        hidden
+                    >
+
+                        <div class="persona-seleccionada__icono">
+                            <i class="fa-solid fa-user-injured"></i>
+                        </div>
+
+                        <div class="persona-seleccionada__datos">
+
+                            <strong id="personalDMNombreVista">
+                                -
+                            </strong>
+
+                            <span id="personalDMDniVista">
+                                DNI: -
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </fieldset>
+
+
+                <!-- FOTO -->
+                <fieldset class="seccion-formulario">
+
+                    <legend>
+                        <i class="fa-solid fa-camera"></i>
+                        Fotografía
+                    </legend>
+
+                    <label
+                        for="fotoReporte"
+                        class="carga-archivo"
+                    >
+
+                        <div class="carga-archivo__icono">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+
+                        <div class="carga-archivo__contenido">
+
+                            <strong>
+                                Seleccionar fotografía
+                            </strong>
+
+                            <span id="nombreFoto">
+                                JPG, PNG o WEBP
+                            </span>
+
+                        </div>
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="fotoReporte"
+                        accept="image/jpeg,image/png,image/webp"
+                        capture="environment"
+                        required
+                        hidden
+                    >
+
+
+                    <div
+                        id="contenedorVistaPrevia"
+                        class="vista-previa"
+                        hidden
+                    >
+
+                        <img
+                            id="imagenVistaPrevia"
+                            alt="Vista previa"
+                        >
+
+                        <button
+                            type="button"
+                            id="btnEliminarFoto"
+                            class="boton-eliminar-foto"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                            Eliminar fotografía
+                        </button>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- BOTONES -->
+                <div class="acciones-formulario">
+
+                    <button
+                        type="reset"
+                        id="btnLimpiarFormulario"
+                        class="boton boton--secundario"
+                    >
+                        Limpiar
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="btnGuardarReporte"
+                        class="boton boton--principal"
+                    >
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        <span id="textoBtnGuardar">
+                            Guardar reporte
+                        </span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <div
+        id="pantallaCarga"
+        class="pantalla-carga"
+        hidden
+    >
+
+        <div class="pantalla-carga__contenido">
+
+            <div class="spinner"></div>
+
+            <p id="textoCarga">
+                Guardando...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="./registro.js"
+    ></script>
+
+</body>
+
+</html>
